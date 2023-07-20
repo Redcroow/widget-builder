@@ -1,0 +1,22 @@
+{
+    "name": "widget countdown",
+    "template":"<div class='countdown-widget'> <div class='countdown-container'> <div class='countdown-box'> <div class='countdown-value' id='days'></div></div><div class='countdown-box'> <div class='countdown-value' id='hours'></div></div><div class='countdown-box'> <div class='countdown-value' id='minutes'></div></div><div class='countdown-box'> <div class='countdown-value' id='seconds'></div></div></div><div class='labels-container'> <div class='label-countdown-container'> <div class='countdown-label-box'> <div class='countdown-label'>Days</div></div><div class='countdown-label-box'> <div class='countdown-label'>Hours</div></div><div class='countdown-label-box'> <div class='countdown-label'>Minutes</div></div><div class='countdown-label-box'> <div class='countdown-label'>Seconds</div></div></div></div></div><style>.countdown-container{display: flex; justify-content: center; align-items: center;}.countdown-box{width: 65px; text-align: center; background-color: #d70000; color: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 10px; @media (min-width: 800px){width: 80px; padding: 15px;}}.countdown-value{font-size: 30px; letter-spacing: 2px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); font-weight: bold; font-family: 'Raleway',sans-serif; font-style: italic; @media (min-width: 800px){font-size: 36px;}}.labels-container{display: flex; justify-content: center;}.label-countdown-container{display: flex; justify-content: space-between; background: #d70000; box-shadow: -4px 28px 35px -7px rgba(0,0,0,0.57); -webkit-box-shadow: -4px 28px 35px -7px rgba(0,0,0,0.57); -moz-box-shadow: -4px 28px 35px -7px rgba(0,0,0,0.57); @media (min-width: 800px){width: 495px;}}.countdown-label-box{display: flex; justify-content: space-evenly; width: 80px; text-align: center; color: #fff; @media (min-width: 800px){width: 100px;}}.countdown-label{font-size: 10px; text-transform: uppercase; margin: 10px 10px; letter-spacing: 2px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); font-weight: bold; font-family: 'Raleway',sans-serif; font-style: italic; @media (min-width: 800px){font-size: 15px;}}</style><script>var countDownDate=new Date('{{countdownDate}}').getTime(); function formatValue(value){return value < 10 ? '0' + value : value;}var x=setInterval(function(){var now=new Date().getTime(); var distance=countDownDate - now; var days=Math.floor(distance / (1000 * 60 * 60 * 24)); var hours=Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); var minutes=Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); var seconds=Math.floor((distance % (1000 * 60)) / 1000); days=formatValue(days); hours=formatValue(hours); minutes=formatValue(minutes); seconds=formatValue(seconds); document.getElementById('days').innerHTML=days; document.getElementById('hours').innerHTML=hours; document.getElementById('minutes').innerHTML=minutes; document.getElementById('seconds').innerHTML=seconds; if (distance < 0){clearInterval(x); document.getElementById('days').innerHTML='0'; document.getElementById('hours').innerHTML='0'; document.getElementById('minutes').innerHTML='0'; document.getElementById('seconds').innerHTML='0';}}, 1000);</script>",
+
+    "schema": [{
+        "type": "tab",
+        "label": "Configuration countdown",
+        "sections": [
+            {
+                "label": "contenue des messages",
+                "settings": [
+                    {
+                        "type": "input",
+                        "label": "Date de fin",
+                        "id": "countdownDate",
+                        "default": "2023-09-01T00:00"
+                    }
+                ]
+            }
+        ]
+    }]
+}
