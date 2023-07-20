@@ -1,0 +1,67 @@
+<div class="banner-widget">
+    <div class="message-banner-container">
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+        <div class="message-banner-widget">{{text1}}</div>
+        <div class="message-banner-widget">{{text2}}</div>
+        <div class="message-banner-widget">{{text3}}</div>
+    </div>
+</div>
+
+<style>
+.banner-widget {
+    width: 100vw;
+    height: 25px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    position: relative;
+    display: flex;
+    padding: 5px 2px;
+}
+
+.message-banner-container {
+    display: inline-flex;
+    overflow: initial;
+    animation: scrollBanner 30s linear infinite;
+}
+
+.message-banner-widget {
+    width: 9vw;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 18px;
+    font-family: Raleway, sans-serif !important;
+}
+
+@keyframes scrollBanner {
+    0% {
+        transform: translateX(-25vw);
+    }
+
+    100% {
+        transform: translateX(0vw);
+    }
+}
+</style>
