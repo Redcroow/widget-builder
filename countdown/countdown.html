@@ -1,4 +1,5 @@
 <div class='countdown-widget'>
+    <span id='countdownDate' aria-label='hidden' style='display: none;'>{{countdownDate}}</span>
     <div class='countdown-container'>
         <div class='countdown-box'>
             <div class='countdown-value' id='days'></div>
@@ -103,37 +104,47 @@
 </style>
 
 <script>
-    var countDownDate = new Date('2023-09-01T00:00').getTime();
-    
-    function formatValue(value) {
-        return value < 10 ? '0' + value : value;
-    }
-
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-            
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-        days = formatValue(days);
-        hours = formatValue(hours);
-        minutes = formatValue(minutes);
-        seconds = formatValue(seconds);
-            
-        document.getElementById('days').innerHTML = days;
-        document.getElementById('hours').innerHTML = hours;
-        document.getElementById('minutes').innerHTML = minutes;
-        document.getElementById('seconds').innerHTML = seconds;
-            
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById('days').innerHTML = '0';
-            document.getElementById('hours').innerHTML = '0';
-            document.getElementById('minutes').innerHTML = '0';
-            document.getElementById('seconds').innerHTML = '0';
+    if( new Date().getTime() > new Date(document.getElementById('countdownDate').innerText).getTime()) {
+        document.querySelector('.countdown-widget').style.display='none';
+        if(document.querySelector('.braderie-open')) {
+            document.querySelector('.braderie-open').style.display='block';
         }
-    }, 1000);
+    }else {
+        if(document.querySelector('.braderie-open')) {
+            document.querySelector('.braderie-open').style.display='none';
+        }
+        
+        function formatValue(value) {
+            return value < 10 ? '0' + value : value;
+        }
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = new Date(document.getElementById('countdownDate').innerText).getTime() - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            days = formatValue(days);
+            hours = formatValue(hours);
+            minutes = formatValue(minutes);
+            seconds = formatValue(seconds);
+
+            document.getElementById('days').innerHTML = days;
+            document.getElementById('hours').innerHTML = hours;
+            document.getElementById('minutes').innerHTML = minutes;
+            document.getElementById('seconds').innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById('days').innerHTML = '0';
+                document.getElementById('hours').innerHTML = '0';
+                document.getElementById('minutes').innerHTML = '0';
+                document.getElementById('seconds').innerHTML = '0';
+                document.querySelector('.countdown-widget').style.display='none';
+            }
+        }, 1000);
+    }
 </script>
