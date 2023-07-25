@@ -1,2 +1,2 @@
 # widget-builder
-Widget buildert for bigcommerce
+Widget builder for bigcommerce
