@@ -1,0 +1,72 @@
+/* Styles généraux du corps de la page */
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+/* Styles pour la grille de cartes */
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Styles pour les cartes individuelles */
+.card {
+    height: 55vh;
+    width: calc((100% / 3) - 16px);
+    margin: 8px;
+    border-radius: 3px;
+    transition: all 200ms ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Effet de survol pour les cartes */
+.card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles pour les éléments d'action des cartes */
+.card-actions {
+    margin: 8px;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Styles pour l'indicateur de chargement */
+#loader {
+    display: flex;
+}
+
+/* Styles pour les cartes de chargement (squelette) */
+.skeleton-card {
+    height: 55vh;
+    width: calc((100% / 3) - 16px);
+    margin: 8px;
+    border-radius: 3px;
+    transition: all 200ms ease-in-out;
+    position: relative;
+    background-color: #eaeaea;
+}
+
+/* Animation de chargement pour les cartes de chargement */
+.skeleton-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+    animation: load 1s infinite;
+}
+
+/* Animation de chargement pour les utilisateurs qui préfèrent moins d'animation */
+@media screen and (prefers-reduced-motion: reduce) {
+    .skeleton-card::after {
+        animation: none;
+    }
+}
